@@ -7,4 +7,12 @@ export default class APIService {
         })
         .then(response => response.json())
     }
+
+    static FetchStockData(ticker, startDate, toDate) {
+
+        return fetch(`http://127.0.0.1:8000/${ticker}/${startDate}/${toDate}/`, {
+            'method': 'GET',
+        })
+        .then(response => response.json())
+    }
 }

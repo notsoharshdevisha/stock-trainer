@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 /*
 function formatDate(date) {
@@ -16,15 +16,43 @@ function formatDate(date) {
 }
 */
 
+function ToShortFormat(str) {
+    let digitsToDisplay
+    if (str.length > 12) {
+        digitsToDisplay = str.length - 12
+        return str.substring(0, digitsToDisplay) + ' Tn'
+    } else if (str.length > 9 && str.length < 13) {
+        digitsToDisplay = str.length - 9
+        return str.substring(0, digitsToDisplay) + ' Bn'
+    } else if (str.length > 6 && str.length < 10) {
+        digitsToDisplay = str.length - 6
+        return str.substring(0, digitsToDisplay) + ' Mn'
+    } else if (str.length > 3 && str.length < 7) {
+        digitsToDisplay = str.length - 3
+        return str.substring(0, digitsToDisplay) + ' Th'
+    } else {
+        return str
+    }
+}
 
 function StockPicker(props) {
 
-    const [startDate, setStartDate] = useState(new Date())
-    const [toDate, setToDate] = useState(new Date())
-    const [ticker, setTicker] = useState(null)
 
-    const localFetchCompanyInfo = () => {
-        props.mainFetchCompanyInfo(ticker, startDate, toDate)
+    const fetchAllData = () => {
+        props.mainFetchCompanyInfo(props.ticker)
+        props.mainFetchStockData(props.ticker, props.startDate, props.toDate)
+    }
+
+    const localSetStartDate = (value) => {
+        props.mainSetStartDate(value.toString())
+    }
+
+    const localSetToDate = (value) => {
+        props.mainSetToDate(value.toString())
+    }
+
+    const localSetTicker = (value) => {
+        props.mainSetTicker(value)
     }
 
     return (
@@ -35,18 +63,18 @@ function StockPicker(props) {
             </div>
 
             <input className="form-control"
-                type="text" 
-                placeholder="TICKER" 
-                onChange={e => setTicker(e.target.value)}
+                type="text"
+                placeholder="TICKER"
+                onChange={e => localSetTicker(e.target.value)}
             />
 
             <div className="StartDatePicker">
                 <div className="StartDateLabel">
                     <label>Start Date</label>
                 </div>
-                <input 
-                    type="date" 
-                    onChange={(e) => setStartDate(e.target.value)}
+                <input
+                    type="date"
+                    onChange={(e) => localSetStartDate(e.target.value)}
                 />
             </div>
 
@@ -54,38 +82,86 @@ function StockPicker(props) {
                 <div className="ToDateLabel">
                     <label>To Date</label>
                 </div>
-                <input 
-                    type="date" 
-                    onChange={(e) => setToDate(e.target.value)}
+                <input
+                    type="date"
+                    onChange={(e) => localSetToDate(e.target.value)}
                 />
             </div>
 
             <div className="FetchButton">
                 <button className="btn btn-success"
-                    onClick={localFetchCompanyInfo}
+                    onClick={fetchAllData}
                 >Fetch Data</button>
             </div>
 
             <div className="InfoTableHeading">
-                <hr/>
-                    <h6>Info</h6>
+                <hr />
+                <h6>Info</h6>
                 <hr />
             </div>
 
-            { props.companyInfo ?  
+            {props.companyInfo ?
                 <div className="InfoTable">
                     <table className="Table">
                         <tr>
                             <td>Currency:</td>
                             <td>{props.companyInfo['financialCurrency']}</td>
                         </tr>
-                       <tr>
+                        <tr>
                             <td>Price:</td>
-                            <td>{props.companyInfo['currentPrice']}</td>
+                            <td>{props.companyInfo['currentPrice'].toFixed(3)}</td>
+                        </tr>
+                        <tr>
+                            <td>Day High:</td>
+                            <td>{props.companyInfo['dayHigh'].toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Day Low:</td>
+                            <td>{props.companyInfo['dayLow'].toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Volume:</td>
+                            <td>{ToShortFormat(props.companyInfo["volume"].toString())}</td>
+                        </tr>
+                        <tr>
+                            <td>52 Week High:</td>
+                            <td>{props.companyInfo["fiftyTwoWeekHigh"].toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>52 Weeks Low:</td>
+                            <td>{props.companyInfo["fiftyTwoWeekLow"].toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td>Total Revenue:</td>
+                            <td>{ToShortFormat(props.companyInfo["totalRevenue"].toString())}</td>
+                        </tr>
+                        <tr>
+                            <td>Revenue/Share:</td>
+                            <td>{props.companyInfo['revenuePerShare'].toFixed(3)}</td>
+                        </tr>
+                        <tr>
+                            <td>Revenue Growth:</td>
+                            <td>{props.companyInfo['revenueGrowth'].toFixed(3)}</td>
+                        </tr>
+                        <tr>
+                            <td>Debt To Equity:</td>
+                            <td>{props.companyInfo["debtToEquity"].toFixed(3)}</td>
+                        </tr>
+                        <tr>
+                            <td>Return On Equity</td>
+                            <td>{props.companyInfo['returnOnEquity'].toFixed(3)}</td>
+                        </tr>
+                        <tr>
+                            <td>Return On Assets:</td>
+                            <td>{props.companyInfo['returnOnAssets'].toFixed(3)}</td>
+                        </tr>
+                        <tr>
+                            <td>Recommendation:</td>
+                            <td>{props.companyInfo['recommendationKey']}</td>
                         </tr>
                     </table>
                 </div>
-            :
+                :
                 null
             }
 

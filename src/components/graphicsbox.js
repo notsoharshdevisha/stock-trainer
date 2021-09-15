@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Plot from 'react-plotly.js'
 
 function GraphicsBox(props) {
 
@@ -23,6 +24,25 @@ function GraphicsBox(props) {
                     <p className="CompanySummaryText">
                         {props.companyInfo['longBusinessSummary']}
                     </p>
+                </div>
+
+                <div className="Plots">
+
+                    <Plot 
+                        data={[
+                            {
+                                x: [1,2,3],
+                                y: [2, 6, 3],
+                                type: 'scatter',
+                                mode: 'lines+markers',
+                                marker: {color: 'red'},
+                                plot_bgcolor: "#f1234"
+                            },
+                            {type: 'bar', x:[1,2,3], y:[2,5,3]},
+                        ]}
+                        layout={{width: 1300, height: 600, title: 'Plis'}}
+                    />
+
                 </div>
 
             </div>

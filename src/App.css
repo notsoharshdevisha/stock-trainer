@@ -1,6 +1,6 @@
 /* Golbal */
 td {
-    padding: 3px;
+    padding: 5px;
     padding-bottom: 0px;
     padding-top: 0px;
 }
@@ -25,7 +25,7 @@ td {
 .StockPickerBox {
     position: absolute;
     background-color: #3b4042;
-    height: 100vh;
+    height: 105vh;
     max-height: 200vh;
     width: 500px;
     padding: 20px;
@@ -86,14 +86,14 @@ td {
 .GraphicsBox {
     position: absolute;
     background-color: #5f6368;
-    height: 100vh;
+    height: 105vh;
     max-height: 200vh;
     left: 26%;
     width: 1410px;
 }
 
 .CompanyLogo {
-    background-color: #5f6368;
+    padding: 3px;
 }
 
 .logoImage {
@@ -111,10 +111,10 @@ td {
     color: white
 }
 .CompanySummary {
-    position: absolute;
     color: white;
     text-align: left;
     padding: 10px;
+    height: 200px;
 }
 
 .CompanySummaryText {
@@ -122,4 +122,7 @@ td {
     position: absolute;
     font-size: 12px;
     width: 1375px;
+}
+
+.Plots {
 }
