@@ -1,128 +1,101 @@
-/* Golbal */
 td {
-    padding: 5px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+  padding: 2px;
 }
 
-/* part of main page */
-.App {
-  text-align: center;
-  position: relative;
+/* for app.js */
+.Header {
+  display: flex;
+  background-color: #3b4042;
+  color: white;
+  padding: 10px;
+  justify-content: center;
 }
 
 .MainBody {
-    position: relative;
+  display: flex;
 }
 
-.Header {
-    background-color: #5f6368;
-    color: white;
-    padding: 20px;
-}
-
-/* stockpickerbox */
+/* stockpickerbox.js */
 .StockPickerBox {
-    position: absolute;
-    background-color: #3b4042;
-    height: 105vh;
-    max-height: 200vh;
-    width: 500px;
-    padding: 20px;
-    text-align: center;
-    left: 0%;
+  background-color: #3b4042; 
+  color: white;
+  padding: 20px;
+  width: 400px;
 }
 
 .StockPickerBoxTitle {
-    color: white;
+  padding: 10px;
 }
 
-
-.StartDateLabel {
-    color: white;
+.TickerForm {
+  padding: 10px;
+  padding-left: 0px;
 }
 
 .StartDatePicker {
-    padding: 10px;
-    text-align: left;
-    padding-top: 30px;
-}
-
-.ToDateLabel {
-    color: white;
+  padding: 10px;
+  padding-left: 0px;
 }
 
 .ToDatePicker {
-    padding: 10px;
-    padding-top: 15px;
-    text-align: left;
+  padding: 10px;
+  padding-left: 0px;
+  padding-top: 5px;
 }
 
 .FetchButton {
-    position: absolute;
-    padding: 10px;
-    text-align: left;
+  padding: 10px;
+  padding-left: 0px;
 }
 
 .InfoTableHeading {
-    position: absolute;
-    top: 35%;
-    color: white;
-    width: 400px;
+  padding: 5px;
 }
 
-.InfoTable {
-    position: absolute;
-    color: white;
-    top: 43%;
-}
-
-.Table {
-    color: white;
-    text-align: left;
+.TableFigures {
+  text-align: center;
 }
 
 /* graphics box */
 .GraphicsBox {
-    position: absolute;
-    background-color: #5f6368;
-    height: 105vh;
-    max-height: 200vh;
-    left: 26%;
-    width: 1410px;
+  background-color: #5f6368;
+  color: white;
+  padding: 20px;
+  width: 100%;
+}
+
+.EmptyGraphicsBox {
+  background-color: #5f6368; 
+  height: 100vh;
+  width: 100%;
 }
 
 .CompanyLogo {
-    padding: 3px;
-}
-
-.logoImage {
-    position: absolute;
+  text-align: center;
 }
 
 .CompanyName {
-    color: white;
-    height: 18px;
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  font-weight: bold;
 }
 
 .ShortInfo {
-    padding-top: 0px;
-    height: 20px;
-    color: white
-}
-.CompanySummary {
-    color: white;
-    text-align: left;
-    padding: 10px;
-    height: 200px;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 5px;
 }
 
-.CompanySummaryText {
-    text-align: center;
-    position: absolute;
-    font-size: 12px;
-    width: 1375px;
+.CompanySummary {
+  text-align: justify;
+}
+
+.GraphmodeButton {
+  text-align: left;
+  padding: 3px;
 }
 
 .Plots {
+  padding: 5px;
 }
