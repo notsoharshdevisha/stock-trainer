@@ -16,24 +16,41 @@ function GraphicsBox(props) {
   if (props.companyInfo) {
     return (
       <div className="GraphicsBox">
-
-        <div className="CompanyLogo">
-          <img className="LogoImage" src={props.companyInfo['logo_url']} />
-        </div>
+        {props.companyInfo['logo_url'] ?
+          <div className="CompanyLogo">
+            <img className="LogoImage" src={props.companyInfo['logo_url']} />
+          </div>
+          :
+          null}
 
         <div className="CompanyName">
           {props.companyInfo['longName']}
         </div>
 
-        <div className="ShortInfo">
-          {props.companyInfo['city']}, {props.companyInfo['state']}, {props.companyInfo['country']}
-        </div>
+        {props.companyInfo['city'] && props.companyInfo['state'] && props.companyInfo['country'] ?
+          <div className="ShortInfo">
+            {props.companyInfo['city']}, {props.companyInfo['state']}, {props.companyInfo['country']}
+          </div>
+          :
+          null}
 
-        <div className="CompanySummary">
-          <p className="CompanySummaryText">
-            {props.companyInfo['longBusinessSummary']}
-          </p>
-        </div>
+
+        {props.companyInfo['longBusinessSummary'] ?
+          <div className="CompanySummary">
+            <p className="CompanySummaryText">
+              {props.companyInfo['longBusinessSummary']}
+            </p>
+          </div>
+          :
+          null}
+        {props.stockData['dateError'] ?
+          <div className="dateError">
+            <hr className="dateError" />
+            <h7 className='dateError'>Not Available. Please Select Appropriate Dates</h7>
+            <hr className='dateError' />
+          </div>
+          :
+          null}
 
         <div className="GraphmodeButton">
           {
@@ -68,7 +85,7 @@ function GraphicsBox(props) {
               ]}
               layout={
                 {
-                  width: 1500,
+                  width: 1600,
                   height: 600,
                   title: { text: props.companyInfo['longName'], font: { color: 'white' } },
                   plot_bgcolor: '#212121',
@@ -104,7 +121,7 @@ function GraphicsBox(props) {
               ]}
               layout={
                 {
-                  width: 1500,
+                  width: 1600,
                   height: 600,
                   title: { text: props.companyInfo['longName'], font: { color: 'white' } },
                   plot_bgcolor: '#212121',

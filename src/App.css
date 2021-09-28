@@ -20,7 +20,6 @@ td {
   background-color: #3b4042; 
   color: white;
   padding: 20px;
-  width: 400px;
 }
 
 .StockPickerBoxTitle {
@@ -91,6 +90,9 @@ td {
   text-align: justify;
 }
 
+.dateError {
+  color: #c30000;
+}
 .GraphmodeButton {
   text-align: left;
   padding: 3px;

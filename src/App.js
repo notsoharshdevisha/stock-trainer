@@ -17,14 +17,6 @@ function App() {
     setTicker(ticker)
   }
 
-  const mainSetStartDate = (startDate) => {
-    setStartDate(startDate)
-  }
-
-  const mainSetToDate = (toDate) => {
-    setToDate(toDate)
-  }
-
   const mainFetchCompanyInfo = (ticker) => {
     APIService.FetchCompanyInfo(ticker)
       .then(response => setCompanyInfo(response))
@@ -51,11 +43,12 @@ function App() {
           mainFetchStockData={mainFetchStockData}
           companyInfo={companyInfo}
           mainSetTicker={mainSetTicker}
-          mainSetStartDate={mainSetStartDate}
-          mainSetToDate={mainSetToDate}
           ticker={ticker}
           startDate={startDate}
           toDate={toDate}
+          setStartDate={setStartDate}
+          setToDate={setToDate}
+          setTicker={setTicker}
         />
         <GraphicsBox
           mainFetchStockData={mainFetchStockData}
